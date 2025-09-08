@@ -28,7 +28,7 @@ export default defineComponent({
         {options?.map((option) => (
           <option value={option} key={option}>
             {option}
-            {$slots.extra?.({ option }) ?? option}
+            {$slots.extra?.({ option })}
           </option>
         ))}
       </select>

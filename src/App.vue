@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DefineComponentSelect, SetupSelect } from './components';
+import { DefineComponentSelect, SetupSelect, WrapedGenericSelect } from './components';
 
 const options = [1, 2, 3, 4, 5];
 const soptions = ['a', 'b', 'c', 'd', 'e'];
@@ -14,4 +14,11 @@ function handleChange(option: number | string) {
   <h3>defineComponent generics</h3>
   <!-- Can't get right IDE support now -->
   <DefineComponentSelect :options="soptions" @update:value="handleChange" />
+  <!-- wraped generics -->
+   <h3>wrapped generics</h3>
+  <WrapedGenericSelect :options="soptions" @update:value="handleChange" >
+    <template #extra="{ option }">
+      <span style="color: red">extra slot -{{ option }}</span>
+    </template>
+  </WrapedGenericSelect>
 </template>

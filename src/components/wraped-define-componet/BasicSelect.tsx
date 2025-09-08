@@ -27,6 +27,7 @@ export default defineComponent({
       <select id="g-select" onChange={handleChange}>
         {options?.map((option) => (
           <option value={option} key={option}>
+            {option}
             {$slots.extra?.({ option }) ?? option}
           </option>
         ))}

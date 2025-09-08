@@ -1,7 +1,13 @@
 <script setup lang="ts" generic="T extends string | number = string">
+import type { VNode } from 'vue';
+
 const props = defineProps<{
   options: T[];
   "onUpdate:value": (option: T) => void;
+}>();
+
+const slots = defineSlots<{
+  extra: (props: { option: T }) => VNode[];
 }>();
 
 function handleChange(e: Event) {
@@ -13,6 +19,7 @@ function handleChange(e: Event) {
   <select @change="handleChange">
     <option v-for="option in props.options" :key="option" :value="option">
       {{ option }}
+      <slot name="extra" :option="option" />
     </option>
   </select>
 </template>
